@@ -1,4 +1,4 @@
-# memopad_v
+# memopad_vue
 
 ## Project setup
 ```
