@@ -16,7 +16,6 @@
 
 <script>
 import MyButton from "../components/MyButton.vue";
-
 export default {
   name: "MemoForm",
   components: {MyButton},
@@ -77,11 +76,7 @@ textarea {
   height: 30em;
   background-color: #fff;
   background-image: none;
-  background-position: 0 90%;
-  background-repeat: repeat no-repeat;
-  background-size: 4px 3px;
-  border: 2px dotted #333;
-  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  border: 1px solid #aaa;
   box-sizing: border-box;
   color: #333;
   margin-bottom: 20px;
@@ -90,36 +85,6 @@ textarea {
 .save {
   margin-right: 20px;
 }
-
-/* button {
-  width: 8em;
-  margin: 9px;
-  font-size: 14px;
-  overflow: hidden;
-  padding: 0.4em 0.8em;
-  border-radius: 0;
-  letter-spacing: 0.2em;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.4s;
-} */
-
-/* button.save {
-  color: #fff;
-  background: #5d5f86;
-}
-
-button:hover {
-  color: #5d5f86;
-  background: #fff;
-}
-
-button span {}
-
-button:before {}
-
-button:hover:before {} */
 
 .center {
   text-align: center;

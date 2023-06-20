@@ -1,7 +1,7 @@
 <template>
   <nav>
     <router-link to="/">メモ一覧</router-link> |
-    <router-link to="/new">メモ新規追加</router-link> |
+    <router-link to="/new">新規追加</router-link> |
     <router-link to="/about">About変更できてる？</router-link>
   </nav>
   <router-view />

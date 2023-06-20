@@ -1,15 +1,16 @@
 <template>
   <div class="home">
-    <ul v-if="hasMemos">
-      <li v-for="memo in memos" v-bind:key="memo.id">
-        <router-link :to="{ name: 'edit', params: { id: memo.id } }">
-          {{ memo.title }}
-        </router-link>
-      </li>
-    </ul>
-    <p v-else>メモはまだありません。</p>
+      <ul v-if="hasMemos">
+        <li v-for="memo in memos" v-bind:key="memo.id">
+          <router-link :to="{ name: 'edit', params: { id: memo.id } }">
+            {{ memo.title }}
+          </router-link>
+        </li>
+      </ul>
+      <p v-else>メモはまだありません。</p>
   </div>
 </template>
+
 
 <style scoped>
 ul {
@@ -19,9 +20,6 @@ ul {
 
 li {
   list-style: none;
-  /* border-bottom: 1px solid #ccc; */
-  /* padding-bottom: 10px; */
-  /* margin-bottom: 10px; */
 }
 
 li a {
