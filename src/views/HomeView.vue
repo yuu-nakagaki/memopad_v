@@ -19,16 +19,36 @@ ul {
 
 li {
   list-style: none;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  /* border-bottom: 1px solid #ccc; */
+  /* padding-bottom: 10px; */
+  /* margin-bottom: 10px; */
 }
 
 li a {
-  color: #999;
-  text-decoration: none;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto 0.6em;
   display: block;
+  position: relative;
+  padding: 0.5em 1em;
+  border: 1px solid #aaa;
+  border-left: 30px solid #f7eaa0;
+  background-color: #fff;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+li a::before {
+  position: absolute;
+  right: 1px;
+  bottom: 10px;
+  width: 50%;
+  height: 50%;
+  box-shadow: 0 10px 15px #aaa;
+  transform: rotate(4deg);
+  z-index: -1;
+  content: '';
 }
 </style>
 
@@ -44,6 +64,6 @@ export default {
       return this.$store.getters
         .getAll; /*データが保存されているstoreから引っ張ってきて渡す*/
     },
-  },
+  }
 };
 </script>
