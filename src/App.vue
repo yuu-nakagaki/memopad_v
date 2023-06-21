@@ -9,12 +9,10 @@
 
 <style>
 #app {
-  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   font-family: 'Shippori Mincho B1', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #333;
-  /* background: #f00; */
   max-width: 600px;
   margin: 0 auto;
 }

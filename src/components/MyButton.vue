@@ -18,7 +18,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .btn {
   align-self: center;
   background-color: #fff;

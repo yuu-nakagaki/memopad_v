@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <!-- <draggable v-model="memos" :item-key="memo.id"> -->
       <ul v-if="hasMemos">
         <li v-for="memo in memos" v-bind:key="memo.id">
           <router-link :to="{ name: 'edit', params: { id: memo.id } }">
@@ -8,9 +9,9 @@
         </li>
       </ul>
       <p v-else>メモはまだありません。</p>
+    <!-- </draggable> -->
   </div>
 </template>
-
 
 <style scoped>
 ul {
@@ -51,8 +52,12 @@ li a::before {
 </style>
 
 <script>
+// import draggable from 'vuedraggable'
 export default {
   name: "HomeView",
+  // components: {
+  //   'draggable': draggable
+  // },
   computed: {
     hasMemos() {
       return this.$store.getters

@@ -1,14 +1,13 @@
 <template>
   <div>
-    <input type="text" v-model="title" />
+    <input type="text" v-model="title" v-bind:class="{'changeColor': changeColor}"/>
   </div>
   <div>
     <textarea v-model="content"></textarea>
   </div>
   <div class="center">
-    <!-- <button @click="save" class="save"><span>SAVE</span></button>
-    <button @click="remove" v-if="memo.id" class="delete">DELETE</button> -->
     <MyButton @click="save" class="save"><span>保存</span></MyButton>
+    <MyButton @click="changeColor =! changeColor" class="change"><span>ふせん色変更</span></MyButton>
     <MyButton @click="remove" v-if="memo.id" class="delete" bgcolor="#E8421E" forecolor="#fff">削除</MyButton>
   </div>
 </template>
@@ -23,7 +22,9 @@ export default {
   data() {
     return {
       title: this.memo.title, /*上記propsにEditViewから渡ってくるので、thisでtitleを再現できる*/
-      content: this.memo.content
+      content: this.memo.content,
+      // changeColor: this.change(),
+      changeColor: false
     }
   },
   methods: {
@@ -49,7 +50,10 @@ export default {
       this.$router.push(
         '/'
       ) /*削除ボタンを押したら画面をトップページへ戻す命令*/
-    }
+    },
+    // change() {
+    //   this.changeColor = "changeColor"
+    // }
   },
 };
 
@@ -69,6 +73,10 @@ input[type="text"] {
   background-color: #fff;
   box-sizing: border-box;
   color: #333;
+}
+
+input.changeColor {
+  border-left: 30px solid #a0f7ac;
 }
 
 textarea {

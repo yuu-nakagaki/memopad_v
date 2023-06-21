@@ -7,11 +7,11 @@
       <MyButton>保存</MyButton>
       <MyButton bgcolor="#E8421E" forecolor="#fff">削除</MyButton>
     </div>
-    <div>
-      <draggable>テスト</draggable>
-    </div>
+
+    <DraggableMemo />
   </div>
 </template>
+
 <script>
 import MyButton from "../components/MyButton.vue";
 export default {
@@ -19,4 +19,5 @@ export default {
     MyButton
   }
 };
+
 </script>
