@@ -1,13 +1,13 @@
 <template>
   <div>
-    <input type="text" v-model="title" v-bind:class="{'changeColor': changeColor}"/>
+    <input type="text" v-model="title" v-bind:class="[husenColorClass]"/>
   </div>
   <div>
     <textarea v-model="content"></textarea>
   </div>
   <div class="center">
     <MyButton @click="save" class="save"><span>保存</span></MyButton>
-    <MyButton @click="changeColor =! changeColor" class="change"><span>ふせん色変更</span></MyButton>
+    <MyButton @click="changeColor" class="change"><span>ふせん色変更</span></MyButton>
     <MyButton @click="remove" v-if="memo.id" class="delete" bgcolor="#E8421E" forecolor="#fff">削除</MyButton>
   </div>
 </template>
@@ -17,14 +17,20 @@
 import MyButton from "../components/MyButton.vue";
 export default {
   name: "MemoForm",
+
+  computed: {
+    husenColorClass() {
+      return this.color === 'green' ? 'green' : '';
+    }
+  },
+
   components: {MyButton},
   props: ['memo'], /*EditViewから渡ってくる*/
   data() {
     return {
       title: this.memo.title, /*上記propsにEditViewから渡ってくるので、thisでtitleを再現できる*/
       content: this.memo.content,
-      // changeColor: this.change(),
-      changeColor: false
+      color: this.memo.color || 'yellow'
     }
   },
   methods: {
@@ -32,6 +38,7 @@ export default {
       let memo = {
         title: this.title,
         content: this.content,
+        color: this.color,
       };
 
       /*メモのidが既に存在している場合、そのidも一緒に渡す（上書き保存のような動き）*/
@@ -40,7 +47,7 @@ export default {
         memo.id = this.memo.id
       }
 
-      this.$store.commit("save", memo)
+      this.$store.commit('save', memo)
       this.$router.push(
         '/'
       ) /*保存ボタンを押したら画面をトップページへ戻す命令（重複してメモが登録されるのを防ぐ）*/
@@ -51,9 +58,11 @@ export default {
         '/'
       ) /*削除ボタンを押したら画面をトップページへ戻す命令*/
     },
-    // change() {
-    //   this.changeColor = "changeColor"
-    // }
+    changeColor() {
+      const newColor = this.color === 'yellow' ? 'green' : 'yellow';
+      this.color = newColor;
+      this.$store.commit('changeHusenColor', {id: this.memo.id, color: newColor });
+    },
   },
 };
 
@@ -75,7 +84,7 @@ input[type="text"] {
   color: #333;
 }
 
-input.changeColor {
+input.green {
   border-left: 30px solid #a0f7ac;
 }
 
@@ -90,7 +99,8 @@ textarea {
   margin-bottom: 20px;
 }
 
-.save {
+.save,
+.change {
   margin-right: 20px;
 }
 

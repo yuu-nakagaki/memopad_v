@@ -8,7 +8,8 @@ const vuexPersist = new VuexPersistence({
 export default createStore({
   state: {
     count: 0,
-    memos: [] /*配列の入れ物。ここにmutation（＝変異の意）の変更内容を反映させる*/
+    memos: [], /*配列の入れ物。ここにmutation（＝変異の意）の変更内容を反映させる*/
+    color: {}
   },
   getters: {
     getCount: (state) => {
@@ -32,7 +33,7 @@ export default createStore({
         x.content = newMemo.content
         /*既存のメモの書き換え処理 */
       } else {
-        newMemo.id = ++state.count /*データ特定用のidを付与「unshift」で新しく追加したものが前にくるようになってるため、順番を混同しないよう*/
+        newMemo.id = ++state.count /*データ特定用のidを付与（++でプラス1）「unshift」で新しく追加したものが前にくるようになってるため、順番を混同しないよう*/
         state.memos.unshift(newMemo)
       }
     },
@@ -41,6 +42,13 @@ export default createStore({
       state.memos = state.memos.filter(memo => memo.id !== id)
       /*「配列の中の一件だけ削除する」という動きを実現するため、「配列から削除したいデータ以外を抜き出し新しい配列に加える」という形にする*/
       /*memo.idが今指定されているid以外のものを取り出す（filter）。つまり、削除したいものだけ排除された配列が渡されてくる。それをstate.memosに保存（上書き）*/
+    },
+
+    changeHusenColor(state, { id, color }){
+      const memo = state.memos.find((memo) => memo.id === id);
+      if (memo) {
+        memo.color = color;
+      }
     }
   },
   actions: {

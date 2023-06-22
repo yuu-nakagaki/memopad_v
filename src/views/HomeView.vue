@@ -1,15 +1,13 @@
 <template>
   <div class="home">
-    <!-- <draggable v-model="memos" :item-key="memo.id"> -->
-      <ul v-if="hasMemos">
-        <li v-for="memo in memos" v-bind:key="memo.id">
-          <router-link :to="{ name: 'edit', params: { id: memo.id } }">
-            {{ memo.title }}
-          </router-link>
-        </li>
-      </ul>
-      <p v-else>メモはまだありません。</p>
-    <!-- </draggable> -->
+    <ul v-if="hasMemos">
+      <li v-for="memo in memos" v-bind:key="memo.id">
+        <router-link :to="{ name: 'edit', params: { id: memo.id } }" :style="getHusenStyle(memo)">
+          {{ memo.title }}
+        </router-link>
+      </li>
+    </ul>
+    <p v-else>メモはまだありません。</p>
   </div>
 </template>
 
@@ -52,12 +50,8 @@ li a::before {
 </style>
 
 <script>
-// import draggable from 'vuedraggable'
 export default {
   name: "HomeView",
-  // components: {
-  //   'draggable': draggable
-  // },
   computed: {
     hasMemos() {
       return this.$store.getters
@@ -67,6 +61,18 @@ export default {
       return this.$store.getters
         .getAll; /*データが保存されているstoreから引っ張ってきて渡す*/
     },
+  },
+  methods: {
+    getHusenStyle(memo) {
+      const colorMap = {
+        yellow: "#f7eaa0",
+        green: "#a0f7ac"
+      };
+      const color = colorMap[memo.color] || "";
+      return {
+        borderLeft: `30px solid ${color}`
+      };
+    }
   }
 };
 </script>
