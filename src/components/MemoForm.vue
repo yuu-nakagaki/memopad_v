@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" v-model="title" v-bind:class="[husenColorClass]"/>
+    <input type="text" v-model="title" v-bind:class="[husenColorClass]" />
   </div>
   <div>
     <textarea v-model="content"></textarea>
@@ -24,7 +24,7 @@ export default {
     }
   },
 
-  components: {MyButton},
+  components: { MyButton },
   props: ['memo'], /*EditViewから渡ってくる*/
   data() {
     return {
@@ -61,7 +61,7 @@ export default {
     changeColor() {
       const newColor = this.color === 'yellow' ? 'green' : 'yellow';
       this.color = newColor;
-      this.$store.commit('changeHusenColor', {id: this.memo.id, color: newColor });
+      this.$store.commit('changeHusenColor', { id: this.memo.id, color: newColor });
     },
   },
 };
@@ -99,12 +99,14 @@ textarea {
   margin-bottom: 20px;
 }
 
-.save,
-.change {
-  margin-right: 20px;
+.center {
+  margin: 0 auto 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
 }
 
-.center {
-  text-align: center;
-}
 </style>

@@ -1,13 +1,22 @@
 <template>
   <nav>
     <router-link to="/">メモ一覧</router-link> |
-    <router-link to="/new">新規追加</router-link> |
-    <router-link to="/about">About変更できてる？</router-link>
+    <router-link to="/new">新規追加</router-link>
   </nav>
   <router-view />
 </template>
 
 <style>
+
+body {
+  background-image: linear-gradient(0deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px)),
+                    linear-gradient(90deg, transparent calc(100% - 1px), #f0f0f0 calc(100% - 1px));
+  background-size: 16px 16px;
+  background-repeat: repeat;
+  background-position: center center;
+  padding: 20px;
+}
+
 #app {
   font-family: 'Shippori Mincho B1', serif;
   -webkit-font-smoothing: antialiased;
@@ -23,6 +32,7 @@ h1 {
 
 nav {
   padding: 30px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
