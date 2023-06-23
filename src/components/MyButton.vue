@@ -34,8 +34,9 @@ export default {
   color: #333;
   cursor: pointer;
   display: inline-block;
-  font-family: Neucha, sans-serif;
+  font-family: 'Shippori Mincho B1', serif;
   font-size: 1rem;
+  font-weight: 700;
   line-height: 23px;
   letter-spacing: 0.2em;
   outline: none;
@@ -49,8 +50,6 @@ export default {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  font-family: 'Shippori Mincho B1', serif;
-  font-weight: 700;
 }
 
 .btn:hover {

@@ -7,7 +7,7 @@
         </router-link>
       </li>
     </ul>
-    <p v-else>メモはまだありません。</p>
+    <p v-else>メモはまだありません。「新規追加」よりメモを追加できます。</p>
   </div>
 </template>
 
@@ -55,11 +55,11 @@ export default {
   computed: {
     hasMemos() {
       return this.$store.getters
-        .getCount; /*getters（storeフォルダのindex.js）の中のgetCountを取得*/
+        .getCount;
     },
     memos() {
       return this.$store.getters
-        .getAll; /*データが保存されているstoreから引っ張ってきて渡す*/
+        .getAll;
     },
   },
   methods: {

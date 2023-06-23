@@ -11,7 +11,6 @@
     <MyButton @click="remove" v-if="memo.id" class="delete" bgcolor="#E8421E" forecolor="#fff">削除</MyButton>
   </div>
 </template>
-<!-- idがあるとき、つまり編集画面のときだけ削除ボタンが表示されるようv-ifを設定。メモの新規作成画面には不要なので。 -->
 
 <script>
 import MyButton from "../components/MyButton.vue";
@@ -25,10 +24,10 @@ export default {
   },
 
   components: { MyButton },
-  props: ['memo'], /*EditViewから渡ってくる*/
+  props: ['memo'], 
   data() {
     return {
-      title: this.memo.title, /*上記propsにEditViewから渡ってくるので、thisでtitleを再現できる*/
+      title: this.memo.title,
       content: this.memo.content,
       color: this.memo.color || 'yellow'
     }
@@ -41,8 +40,6 @@ export default {
         color: this.color,
       };
 
-      /*メモのidが既に存在している場合、そのidも一緒に渡す（上書き保存のような動き）*/
-      /*左辺のmemo.idは上記のletのmemoを指し、右辺のthis.memo.idはpropsで渡されているmemoを指す*/
       if (this.memo.id) {
         memo.id = this.memo.id
       }
@@ -50,13 +47,13 @@ export default {
       this.$store.commit('save', memo)
       this.$router.push(
         '/'
-      ) /*保存ボタンを押したら画面をトップページへ戻す命令（重複してメモが登録されるのを防ぐ）*/
+      ) 
     },
     remove() {
       this.$store.commit('delete', this.memo.id)
       this.$router.push(
         '/'
-      ) /*削除ボタンを押したら画面をトップページへ戻す命令*/
+      ) 
     },
     changeColor() {
       const newColor = this.color === 'yellow' ? 'green' : 'yellow';
