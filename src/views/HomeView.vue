@@ -47,6 +47,10 @@ li a::before {
   z-index: -1;
   content: '';
 }
+
+p {
+  text-align: center;
+}
 </style>
 
 <script>
