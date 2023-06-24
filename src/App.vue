@@ -48,3 +48,34 @@ nav a.router-link-exact-active {
   color: #d16552;
 }
 </style>
+
+<script>
+  export default {
+    methods: {
+      createTitleDesc: function(routeInstance){
+        if(routeInstance.meta.title){
+          const setTitle = routeInstance.meta.title;
+          document.title = setTitle;
+        } else {
+          document.title = 'PETAMO'
+        }
+
+        if(routeInstance.meta.desc){
+          const setDesc = routeInstance.meta.desc;
+          document.querySelector("meta[name='description']").setAttribute('content', setDesc)
+        } else {
+          document.querySelector("meta[name='description']").setAttribute('content', 'ディスクリプションはありません')
+        }
+      }
+    },
+    mounted: function(){
+      const routeInstance = this.$route;
+      this.createTitleDesc(routeInstance);
+    },
+    watch: {
+      '$route'(routeInstance) {
+        this.createTitleDesc(routeInstance);
+      }
+    }
+  }
+</script>
